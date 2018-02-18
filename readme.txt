@@ -3,6 +3,7 @@ Contributors: ethitter
 Donate link: https://ethitter.com/donate/
 Tags: image, proxy, cdn
 Requires at least: 4.9
+Requires PHP: 7.0
 Tested up to: 4.9
 Stable tag: 0.1.0
 License: GPLv2 or later
