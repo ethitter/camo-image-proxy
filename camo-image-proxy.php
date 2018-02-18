@@ -20,3 +20,13 @@ define( __NAMESPACE__ . '\PLUGIN_PATH', dirname( __FILE__ ) );
  * Trait for singletons
  */
 require_once PLUGIN_PATH . '/inc/trait-singleton.php';
+
+/**
+ * Plugin options
+ */
+require_once PLUGIN_PATH . '/inc/class-options.php';
+
+/**
+ * Assorted functions
+ */
+require_once PLUGIN_PATH . '/inc/functions.php';
