@@ -32,6 +32,21 @@ require_once PLUGIN_PATH . '/inc/class-options.php';
 require_once PLUGIN_PATH . '/inc/class-options-page.php';
 
 /**
+ * URL Building
+ */
+require_once PLUGIN_PATH . '/inc/class-urls.php';
+
+/**
+ * Rewrite WordPress-generated URLs
+ */
+require_once PLUGIN_PATH . '/inc/class-rewrite-urls.php';
+
+/**
+ * Rewrite URLs in post content
+ */
+require_once PLUGIN_PATH . '/inc/class-rewrite-content.php';
+
+/**
  * Assorted functions
  */
 require_once PLUGIN_PATH . '/inc/functions.php';
