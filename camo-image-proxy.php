@@ -12,4 +12,11 @@
  * @package         Camo_Image_Proxy
  */
 
-// Your code starts here.
+namespace Camo_Image_Proxy;
+
+define( __NAMESPACE__ . '\PLUGIN_PATH', dirname( __FILE__ ) );
+
+/**
+ * Trait for singletons
+ */
+require_once PLUGIN_PATH . '/inc/trait-singleton.php';
