@@ -31,6 +31,22 @@ class Options {
 	];
 
 	/**
+	 * Access certain private properties
+	 *
+	 * @param string $name Property name.
+	 * @return mixed
+	 */
+	public function __get( string $name ) {
+		switch ( $name ) {
+			case 'name':
+				return $this->name;
+
+			default:
+				return new \WP_Error( 'invalid-property', __( 'Invalid property requested.', 'camo-image-proxy' ), $name );
+		}
+	}
+
+	/**
 	 * Retrieve full plugin options
 	 *
 	 * @return array
