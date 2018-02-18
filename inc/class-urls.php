@@ -25,7 +25,7 @@ class URL {
 		$can_rewrite = true;
 
 		// Validate host.
-		if ( empty( $host ) || ( ! filter_var( $host, FILTER_VALIDATE_URL ) && ! filter_var( $host, FILTER_VALIDATE_IP ) ) ) {
+		if ( $this->is_valid_url( $host ) ) {
 			$can_rewrite = false;
 		}
 
@@ -45,11 +45,9 @@ class URL {
 	 * @return string|bool
 	 */
 	public function encode( string $url ) : string {
-		if ( ! $this->can_rewrite() ) {
+		if ( ! $this->can_rewrite() || ! $this->is_valid_url( $url ) ) {
 			return false;
 		}
-
-		// TODO: validate $url.
 
 		$key         = hash_hmac( 'sha1', $url, Options::instance()->get( 'key' ) );
 		$url_encoded = bin2hex( $url );
@@ -68,5 +66,15 @@ class URL {
 	 */
 	public function decode( string $url ) : string {
 		return false;
+	}
+
+	/**
+	 * Can we encode this URL?
+	 *
+	 * @param string $url URL to validate.
+	 * @return bool
+	 */
+	private function is_valid_url( string $url ) : bool {
+		return empty( $url ) || ( ! filter_var( $url, FILTER_VALIDATE_URL ) && ! filter_var( $url, FILTER_VALIDATE_IP ) );
 	}
 }
