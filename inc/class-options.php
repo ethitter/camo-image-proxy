@@ -80,6 +80,21 @@ class Options {
 	 * @return bool
 	 */
 	public function set( string $option, $value ) : bool {
+		$value              = $this->sanitize( $option, $value );
+		$options            = $this->get_all();
+		$options[ $option ] = $value;
+
+		return update_option( $this->name, $options );
+	}
+
+	/**
+	 * Sanitize option
+	 *
+	 * @param string $option Plugin option.
+	 * @param mixed  $value Option value to sanitize.
+	 * @return mixed
+	 */
+	public function sanitize( string $option, $value ) {
 		switch ( $option ) {
 			case 'host':
 				$value = esc_url( $value );
@@ -93,9 +108,20 @@ class Options {
 				return false;
 		}
 
-		$options            = $this->get_all();
-		$options[ $option ] = $value;
+		return $value;
+	}
 
-		return update_option( $this->name, $options );
+	/**
+	 * Sanitize array of options
+	 *
+	 * @param array $options Options to sanitize.
+	 * @return array
+	 */
+	public function sanitize_all( array $options ) : array {
+		foreach ( $options as $option => $value ) {
+			$options[ $option ] = $this->sanitize( $option, $value );
+		}
+
+		return $options;
 	}
 }

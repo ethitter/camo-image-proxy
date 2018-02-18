@@ -12,6 +12,6 @@ namespace Camo_Image_Proxy;
  *
  * @return object
  */
-function options() {
+function Options() {
 	return Options::instance();
 }

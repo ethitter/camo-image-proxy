@@ -29,11 +29,21 @@ require_once PLUGIN_PATH . '/inc/class-options.php';
 /**
  * Options page
  */
-if ( is_admin() ) {
-	require_once PLUGIN_PATH . '/inc/class-options-page.php';
-}
+require_once PLUGIN_PATH . '/inc/class-options-page.php';
 
 /**
  * Assorted functions
  */
 require_once PLUGIN_PATH . '/inc/functions.php';
+
+/**
+ * Load plugin singletons
+ */
+function init() {
+	Options::instance();
+
+	if ( is_admin() ) {
+		Options_Page::instance();
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\init' );
