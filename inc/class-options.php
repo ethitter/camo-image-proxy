@@ -31,10 +31,14 @@ class Options {
 	];
 
 	/**
-	 * Hooks and other preparations
+	 * Retrieve full plugin options
+	 *
+	 * @return array
 	 */
-	public function setup() {
-		// Hooks and such.
+	private function get_all() : array {
+		$options = get_option( $this->name, [] );
+		$options = wp_parse_args( $options, $this->allowed_options );
+		return $options;
 	}
 
 	/**
@@ -48,9 +52,7 @@ class Options {
 			return false;
 		}
 
-		$options = get_option( $this->name, [] );
-		$options = wp_parse_args( $options, $this->allowed_options );
-
+		$options = $this->get_all();
 		return $options[ $option ] ?? false;
 	}
 
@@ -61,7 +63,23 @@ class Options {
 	 * @param mixed  $value Option value.
 	 * @return bool
 	 */
-	public function update( string $option, $value ) : bool {
-		return false;
+	public function set( string $option, $value ) : bool {
+		switch ( $option ) {
+			case 'host':
+				$value = esc_url( $value );
+				break;
+
+			case 'key':
+				$value = sanitize_text_field( $value );
+				break;
+
+			default:
+				return false;
+		}
+
+		$options            = $this->get_all();
+		$options[ $option ] = $value;
+
+		return update_option( $this->name, $options );
 	}
 }

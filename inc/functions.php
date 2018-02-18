@@ -2,7 +2,7 @@
 /**
  * Assorted helpers
  *
- * @pacakge Camo_Image_Proxy
+ * @package Camo_Image_Proxy
  */
 
 namespace Camo_Image_Proxy;
