@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Camo Image Proxy 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/camo-image-proxy\n"
-"POT-Creation-Date: 2018-02-18 19:07:54+00:00\n"
+"POT-Creation-Date: 2018-02-19 01:54:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,8 +24,20 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
+#: inc/class-options-page.php:43
+msgid "Host"
+msgstr ""
+
+#: inc/class-options-page.php:44
+msgid "Shared Key"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "Camo Image Proxy"
+msgstr ""
+
+#: inc/class-options.php:45
+msgid "Invalid property requested."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
