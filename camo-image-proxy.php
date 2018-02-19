@@ -56,11 +56,14 @@ require_once PLUGIN_PATH . '/inc/functions.php';
  */
 function init() {
 	Options::instance();
+	URL::instance();
 
+	// Don't rewrite in the admin!
 	if ( is_admin() ) {
 		Options_Page::instance();
+	} else {
+		Rewrite_URLs::instance();
+		Rewrite_Content::instance();
 	}
-
-	Rewrite_URLs::instance();
 }
 add_action( 'init', __NAMESPACE__ . '\init' );
