@@ -19,6 +19,11 @@ class URL {
 	 * @return bool
 	 */
 	public function can_rewrite() : bool {
+		// Never rewrite in admin.
+		if ( is_admin() ) {
+			return false;
+		}
+
 		$host = Options::instance()->get( 'host' );
 		$key  = Options::instance()->get( 'key' );
 

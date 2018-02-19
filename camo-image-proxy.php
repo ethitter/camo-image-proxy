@@ -58,10 +58,11 @@ function init() {
 	Options::instance();
 	URL::instance();
 
-	// Don't rewrite in the admin!
 	if ( is_admin() ) {
 		Options_Page::instance();
-	} else {
+	}
+
+	if ( URL::instance()->can_rewrite() ) {
 		Rewrite_URLs::instance();
 		Rewrite_Content::instance();
 	}
