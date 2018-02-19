@@ -34,7 +34,7 @@ require_once PLUGIN_PATH . '/inc/class-options-page.php';
 /**
  * URL Building
  */
-require_once PLUGIN_PATH . '/inc/class-urls.php';
+require_once PLUGIN_PATH . '/inc/class-url.php';
 
 /**
  * Rewrite WordPress-generated URLs
@@ -60,5 +60,7 @@ function init() {
 	if ( is_admin() ) {
 		Options_Page::instance();
 	}
+
+	Rewrite_URLs::instance();
 }
 add_action( 'init', __NAMESPACE__ . '\init' );

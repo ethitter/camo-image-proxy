@@ -25,7 +25,7 @@ class URL {
 		$can_rewrite = true;
 
 		// Validate host.
-		if ( $this->is_valid_url( $host ) ) {
+		if ( ! $this->is_valid_url( $host ) ) {
 			$can_rewrite = false;
 		}
 
@@ -75,6 +75,14 @@ class URL {
 	 * @return bool
 	 */
 	private function is_valid_url( string $url ) : bool {
-		return empty( $url ) || ( ! filter_var( $url, FILTER_VALIDATE_URL ) && ! filter_var( $url, FILTER_VALIDATE_IP ) );
+		if ( empty( $url ) ) {
+			return false;
+		}
+
+		if ( false === filter_var( $url, FILTER_VALIDATE_URL ) && false === filter_var( $url, FILTER_VALIDATE_IP ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }
