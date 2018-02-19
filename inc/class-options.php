@@ -98,6 +98,11 @@ class Options {
 		switch ( $option ) {
 			case 'host':
 				$value = esc_url( $value );
+
+				if ( ! empty( $value ) ) {
+					$value = untrailingslashit( $value );
+				}
+
 				break;
 
 			case 'key':
